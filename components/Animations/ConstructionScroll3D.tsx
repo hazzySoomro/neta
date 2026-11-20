@@ -343,7 +343,7 @@ export default function ConstructionScroll3D(props: Props) {
     const rootRef = useRef<HTMLDivElement>(null), canvasRef = useRef<HTMLCanvasElement>(null), capRefs = useRef<any[]>([]), barRef = useRef<HTMLDivElement>(null), floorRef = useRef<HTMLSpanElement>(null), angleRef = useRef<HTMLSpanElement>(null), hintRef = useRef<HTMLDivElement>(null)
     useEffect(() => {
         const canvas = canvasRef.current, root = rootRef.current; if (!canvas || !root) return
-        const isCanvas = RenderTarget.current() === RenderTarget.canvas || RenderTarget.current() === RenderTarget.thumbnail || RenderTarget.current() === RenderTarget.export
+        const isCanvas = RenderTarget.current() === RenderTarget.canvas || RenderTarget.current() === RenderTarget.thumbnail || RenderTarget.current() === (RenderTarget as any).export
         const reduce = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)
         const gl: any = canvas.getContext("webgl2", { antialias: Math.min(window.innerWidth, window.innerHeight) >= 700, alpha: false, preserveDrawingBuffer: isCanvas, powerPreference: "high-performance" })
         if (!gl) return
